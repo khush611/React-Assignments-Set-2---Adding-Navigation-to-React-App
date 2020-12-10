@@ -6,8 +6,8 @@ export default function LocationDisplay(props) {
   return (
     <>
       <div>Render aanything </div>
-      {this.props.paths === "home" && <div>{"/"}</div>}
-      {this.props.paths === "about" && <div>{"/about"}</div>}
+      {props.paths === "home" && <div>{"/"}</div>}
+      {props.paths === "about" && <div>{"/about"}</div>}
     </>
   );
 }
