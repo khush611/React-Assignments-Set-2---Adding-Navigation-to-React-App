@@ -13,28 +13,38 @@
 // }
 
 // export default App;
-import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { Component, useState } from "react";
 import "../styles/App.css";
-import About from "./About";
 import Home from "./Home";
+import About from "./About";
+import Location from "./LocationDisplay";
+import { Route, Link, Switch, useLocation } from "react-router-dom";
 
+function Invalid() {
+  return <div>No match</div>;
+}
 class App extends Component {
   render() {
     return (
-      <div id="main">
-        {/* Do not remove the main div */}
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <Switch>
-          <Route path="/about" render={() => <About />} />
-          <Route path="/" render={() => <Home />} />
-        </Switch>
-        {/* <Home />
-        <About /> */}
-      </div>
+      <>
+        <div id="main">
+          {/* Do not remove the main div */}
+          <nav>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+          </nav>
+
+          <Switch>
+            <Route path="/about" component={About} />
+            <Route path="/" exact component={Home} />
+            <Route path="/" component={Invalid} />
+          </Switch>
+          <Location />
+        </div>
+      </>
     );
   }
 }
 
 export default App;
+export const LocationDisplay = Location;
